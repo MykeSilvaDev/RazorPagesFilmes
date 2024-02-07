@@ -1,0 +1,84 @@
+﻿                                       
+@page
+@model RazorPagesFilmes.Pages.Filmes.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+                                        <!--   // Aula 54 Criando Funcionalidades 
+                                               // Aula 55 Criando a funcionalidade buscar com o select 04/02/24
+                                        -->
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Criar novo filme</a>
+</p>
+ 
+
+<!-- (1-54) asp-for É Razor que faz um controle do campo do meu HTML com o C#-->
+<form>
+    <p>
+
+<!-- (2-55) Criando o botão de selecionar os Generos-->
+        <select asp-for="FilmeGenero" asp-items="@Model.Generos">
+            <option value="">Todos</option>
+        </select>
+        Buscar Filme: <input type="text" asp-for="TermoBusca"/>
+        <input type="submit" value="Buscar"/>
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <!--Display name For pega o nome da coluna-->
+                @Html.DisplayNameFor(model => model.Filme[0].Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Filme[0].DataLancamento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Filme[0].Genero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Filme[0].Preco)
+            </th>
+            <!-- (3-55) Adicionando tabela-->
+            <th>
+                @Html.DisplayNameFor(model => model.Filme[0].Pontos)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Filme) {
+        <tr>
+            <td>
+                <!--Display For pega o conteudo da coluna-->
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataLancamento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Preco)
+            </td>
+            <!--(3-55) Criando tabela Pontos-->
+            <td>
+                @Html.DisplayFor(model => item.Pontos)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Editar</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Detalhes</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Apagar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

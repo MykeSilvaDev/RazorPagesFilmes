@@ -1,0 +1,51 @@
+﻿@page
+@model RazorPagesFilmes.Pages.Filmes.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+                                    <!-- Aula 56 Adicionando campo novo (PONTOS) -->
+<h1>Details</h1>
+
+<div>
+    <h4>Filme</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Filme.Titulo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Filme.Titulo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Filme.DataLancamento)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Filme.DataLancamento)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Filme.Genero)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Filme.Genero)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Filme.Preco)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Filme.Preco)
+        </dd>
+
+        <!--(1-56) Adicionando o campo de (PONTO)-->
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Filme.Pontos)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Filme.Pontos)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Filme.ID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
